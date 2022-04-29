@@ -1,5 +1,5 @@
 # Hello, <img src="https://raw.githubusercontent.com/nixin72/nixin72/master/wave.gif" alt="Waving hand animated gif" height="45" width="45" />my name is Carsen!  
-### I'm a software engineering student at Arizona State University!
+### I'm a software engineering student at Arizona State University! :mortar_board:
 
 ## My Technologies :zap:
 
@@ -11,19 +11,3 @@
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
 
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=AsterinoCarsen&theme=radical)
-
-
-<!--
-**AsterinoCarsen/asterinocarsen** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
