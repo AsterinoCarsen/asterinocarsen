@@ -1,5 +1,6 @@
 # Hello, <img src="https://raw.githubusercontent.com/nixin72/nixin72/master/wave.gif" alt="Waving hand animated gif" height="45" width="45" />my name is Carsen!  
-### I'm a software engineering student at Arizona State University! :mortar_board:
+#### I'm a software engineering student at Arizona State University! :mortar_board:
+#### Check out my portfolio [here](https://asterinocarsen.github.io/portfolio/)! :grin:
 <br>
 
 ## My Technologies :zap:
@@ -11,6 +12,6 @@
 ![Unity](https://img.shields.io/badge/unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white)
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=AsterinoCarsen&theme=radical)
-<br>
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=AsterinoCarsen&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
+
+### [Email Me](mailto:carse.astro@gmail.com?subject=[GitHub]%20Source%20Han%20Sans)
