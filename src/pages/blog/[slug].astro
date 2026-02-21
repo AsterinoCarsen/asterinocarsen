@@ -1,0 +1,62 @@
+---
+import { getCollection } from "astro:content";
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{post.data.title} | Carsen Asterino</title>
+        <meta name="description" content={post.data.description} />
+    </head>
+
+    <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-neutral-800">
+        <header class="border-b border-neutral-800 bg-neutral-950/90 backdrop-blur">
+            <div class="max-w-4xl mx-auto px-6 py-5 flex items-center justify-between">
+                <a href="/" class="text-sm text-neutral-300 hover:text-white transition"
+                    >Carsen Asterino</a
+                >
+                <a
+                    href="/"
+                    class="inline-flex items-center rounded-md border border-neutral-700 px-4 py-2 text-sm font-semibold hover:border-neutral-500 transition"
+                >
+                    Back home
+                </a>
+            </div>
+        </header>
+
+        <main class="max-w-4xl mx-auto px-6 py-16">
+            <article class="rounded-2xl border border-neutral-800 bg-neutral-900 p-8 sm:p-12">
+                <p class="text-sm text-neutral-400">{post.data.pubDate.toDateString()}</p>
+                <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight">
+                    {post.data.title}
+                </h1>
+                <p class="mt-4 text-neutral-300">{post.data.description}</p>
+
+                <div
+                    class="mt-10 border-t border-neutral-800 pt-8 leading-8 text-neutral-200 [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:mt-10 [&_h1]:mb-4 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:mt-8 [&_h2]:mb-3 [&_p]:mb-5 [&_a]:underline [&_a]:text-white [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-5 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-5 [&_li]:mb-2 [&_hr]:border-neutral-700"
+                >
+                    <Content />
+                </div>
+            </article>
+        </main>
+
+        <footer class="border-t border-neutral-800 py-10 text-center text-sm text-neutral-500">
+            <p>Copyright {new Date().getFullYear()} Carsen Asterino</p>
+        </footer>
+    </body>
+</html>
