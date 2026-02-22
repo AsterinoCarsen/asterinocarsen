@@ -1,0 +1,38 @@
+---
+import "../styles/global.css";
+import Navbar from "./Navbar.astro";
+import Profile from "./Profile.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Carsen Asterino</title>
+        <meta name="description" content="Software Engineer major at Arizona State University." />
+    </head>
+
+    <body class="min-h-screen bg-black text-white antialiased">
+        <main class="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-8 md:px-10 md:py-12">
+            <Navbar />
+
+            <div class="mt-6 grid flex-1 gap-8 lg:grid-cols-[minmax(260px,340px)_1fr] lg:items-start">
+                <aside class="w-full">
+                    <Profile />
+                </aside>
+
+                <section class="w-full">
+                    <slot />
+                </section>
+            </div>
+
+            <p class="mt-8 text-sm text-white/70">
+                Made by Carsen Asterino | Powered by
+                <a target="_blank" rel="noopener noreferrer" href="https://astro.build/">Astro</a> and
+                <a target="_blank" rel="noopener noreferrer" href="https://tailwindcss.com/">Tailwind CSS</a> |
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/AsterinoCarsen/asterinocarsen">Source Code</a>
+            </p>
+        </main>
+    </body>
+</html>
