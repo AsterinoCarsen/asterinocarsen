@@ -14,15 +14,19 @@ import Profile from "./Profile.astro";
     </head>
 
     <body class="min-h-screen bg-black text-white antialiased">
-        <main class="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-8 md:px-10 md:py-12">
+        <main
+            class="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-8 md:px-10 md:py-12"
+        >
             <Navbar />
 
-            <div class="mt-6 grid flex-1 gap-8 lg:grid-cols-[minmax(260px,340px)_1fr] lg:items-start">
-                <aside class="w-full">
+            <div
+                class="mt-6 grid flex-1 gap-8 lg:grid-cols-[minmax(260px,340px)_1fr] lg:items-start"
+            >
+                <aside class="w-full lg:sticky lg:top-8 lg:self-start">
                     <Profile />
                 </aside>
 
-                <section class="w-full">
+                <section class="slot-content w-full [&>*+*]:mt-26 md:[&>*+*]:mt-32">
                     <slot />
                 </section>
             </div>
@@ -31,9 +35,44 @@ import Profile from "./Profile.astro";
             <p class="mt-8 text-sm text-white/70">
                 Made by Carsen Asterino | Powered by
                 <a target="_blank" rel="noopener noreferrer" href="https://astro.build/">Astro</a> and
-                <a target="_blank" rel="noopener noreferrer" href="https://tailwindcss.com/">Tailwind CSS</a> |
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/AsterinoCarsen/asterinocarsen">Source Code</a>
+                <a target="_blank" rel="noopener noreferrer" href="https://tailwindcss.com/"
+                    >Tailwind CSS</a
+                > |
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://github.com/AsterinoCarsen/asterinocarsen">Source Code</a
+                >
             </p>
         </main>
+
+        {/* Reveal on scroll */}
+        <script is:inline>
+            const container = document.querySelector(".slot-content");
+            if (container) {
+                const items = [...container.children];
+                const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+                items.forEach((el) => el.classList.add("reveal"));
+
+                if (reduced) {
+                    items.forEach((el) => el.classList.add("is-visible"));
+                } else {
+                    const observer = new IntersectionObserver(
+                        (entries, obs) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add("is-visible");
+                                    obs.unobserve(entry.target);
+                                }
+                            });
+                        },
+                        { threshold: 0.2, rootMargin: "0px 0px -10% 0px" },
+                    );
+
+                    items.forEach((el) => observer.observe(el));
+                }
+            }
+        </script>
     </body>
 </html>
