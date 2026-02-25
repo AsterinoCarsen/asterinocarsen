@@ -1,4 +1,95 @@
-<section>
-    <h1 class="text-8xl font-extrabold">LET'S WORK</h1>
-    <h1 class="text-8xl font-extrabold text-white/20">TOGETHER</h1>
+<section class="rounded-2xl p-6 md:p-8">
+    <h1 class="text-6xl font-extrabold leading-none tracking-tight text-white md:text-8xl">LET'S WORK</h1>
+    <h1 class="text-6xl font-extrabold leading-none tracking-tight text-white/15 md:text-8xl">TOGETHER</h1>
+
+    <form id="contact-form" class="mt-10 space-y-6">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div class="space-y-3">
+                <label for="name" class="font-light text-sm text-white/70">Name</label>
+                <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    placeholder="Your Name"
+                    class="w-full rounded-xl border border-transparent bg-white/15 px-3 py-2 text-lg text-white outline-none transition focus:border-[#f46c38]"
+                />
+            </div>
+
+            <div class="space-y-3">
+                <label for="email" class="font-light text-sm text-white/70">Email</label>
+                <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="you@email.com"
+                    class="w-full rounded-xl border border-transparent bg-white/15 px-3 py-2 text-lg text-white outline-none transition focus:border-[#f46c38]"
+                />
+            </div>
+        </div>
+
+        <div class="space-y-3">
+            <label for="message" class="font-light text-sm text-white/70">Message</label>
+            <textarea
+                id="message"
+                name="message"
+                required
+                placeholder="Message"
+                rows="5"
+                class="w-full rounded-xl border border-transparent bg-white/15 px-3 py-2 text-lg text-white outline-none transition focus:border-[#f46c38]"
+            />
+        </div>
+
+        <button
+            id="contact-submit"
+            type="submit"
+            class="w-full rounded-xl bg-green-400 px-4 py-3 text-xl font-semibold text-white transition hover:bg-green-500 disabled:cursor-not-allowed disabled:opacity-70"
+        >
+            Submit
+        </button>
+
+        <p id="contact-status" class="min-h-6 text-base text-white/70" aria-live="polite"></p>
+    </form>
 </section>
+
+<script>
+    const form = document.getElementById("contact-form");
+    const submitBtn = document.getElementById("contact-submit");
+    const status = document.getElementById("contact-status");
+
+    form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        if (!(form instanceof HTMLFormElement) || !(submitBtn instanceof HTMLButtonElement) || !(status instanceof HTMLParagraphElement)) {
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        status.textContent = "";
+
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
+                throw new Error("Request failed");
+            }
+
+            form.reset();
+            status.textContent = "Message sent. I will get back to you shortly.";
+        } catch {
+            status.textContent = "Message failed to send. Please try again.";
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Submit";
+        }
+    });
+</script>
