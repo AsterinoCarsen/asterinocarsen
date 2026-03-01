@@ -1,4 +1,52 @@
+---
+import ToolCard from "../cards/ToolCard.astro";
+---
+
 <section>
     <h1 class="text-8xl font-extrabold">POWERFUL</h1>
     <h1 class="text-8xl font-extrabold text-white/20">TOOLS</h1>
+
+    <div class="grid grid-cols-2 gap-14 mt-10">
+        <ToolCard
+            href="https://react.dev/"
+            title="React"
+            subtitle="Frontend development"
+            logo="/icons/reactjs.svg"
+        />
+
+        <ToolCard
+            href="https://nextjs.org/"
+            title="Next.js"
+            subtitle="React-based web framework"
+            logo="/icons/nextjs.svg"
+        />
+
+        <ToolCard
+            href="https://expo.dev/"
+            title="Expo"
+            subtitle="Mobile development"
+            logo="/icons/expo.svg"
+        />
+
+        <ToolCard
+            href="https://spring.io/"
+            title="Spring Boot"
+            subtitle="Backend development"
+            logo="/icons/spring.svg"
+        />
+
+        <ToolCard
+            href="https://dotnet.microsoft.com/en-us/apps/aspnet"
+            title="ASP.NET"
+            subtitle="Web development"
+            logo="/icons/dotnet.svg"
+        />
+
+        <ToolCard
+            href="https://aws.amazon.com/"
+            title="AWS"
+            subtitle="Cloud computing platform"
+            logo="/icons/aws.svg"
+        />
+    </div>
 </section>
