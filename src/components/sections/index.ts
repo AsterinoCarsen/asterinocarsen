@@ -1,6 +1,6 @@
-export { default as Hero } from "./Hero.astro";
-export { default as RecentProjects } from "./RecentProjects.astro";
-export { default as Experience } from "./Experience.astro";
-export { default as Tools } from "./Tools.astro";
-export { default as Blog } from "./Blog.astro";
-export { default as Contact } from "./Contact.astro";
+export { default as HeroSection } from "./HeroSection.astro";
+export { default as RecentProjectsSection } from "./RecentProjectsSection.astro";
+export { default as ExperienceSection } from "./ExperienceSection.astro";
+export { default as ToolsSection } from "./ToolsSection.astro";
+export { default as BlogSection } from "./BlogSection.astro";
+export { default as ContactSection } from "./ContactSection.astro";
