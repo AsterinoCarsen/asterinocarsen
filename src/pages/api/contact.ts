@@ -1,4 +1,7 @@
+import { Resend } from "resend";
 import type { APIRoute } from "astro";
+
+export const prerender = false;
 
 type ContactPayload = {
     name?: string;
@@ -34,6 +37,8 @@ export const POST: APIRoute = async ({ request }) => {
             });
         }
 
+        const resend = new Resend(resendApiKey);
+
         const emailContent = [
             `New message from your portfolio contact form`,
             ``,
@@ -44,22 +49,15 @@ export const POST: APIRoute = async ({ request }) => {
             message,
         ].join("\n");
 
-        const resendResponse = await fetch("https://api.resend.com/emails", {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${resendApiKey}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                from: fromEmail,
-                to: [toEmail],
-                subject: `New contact form message from ${name}`,
-                text: emailContent,
-                reply_to: email,
-            }),
+        const result = await resend.emails.send({
+            from: fromEmail,
+            to: [toEmail],
+            replyTo: email,
+            subject: `New contact form message from ${name}`,
+            text: emailContent,
         });
 
-        if (!resendResponse.ok) {
+        if (result.error) {
             return new Response(JSON.stringify({ error: "Email provider failed request." }), {
                 status: 502,
                 headers: { "Content-Type": "application/json" },
