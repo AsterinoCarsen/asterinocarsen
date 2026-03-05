@@ -1,0 +1,37 @@
+---
+interface Props {
+    href: string;
+    title: string;
+    subtitle: string;
+    logo: string;
+}
+
+const {
+    href,
+    title,
+    subtitle,
+    logo,
+} = Astro.props as Props;
+---
+
+<a
+    href={href}
+    target="_blank"
+    rel="noopener"
+    class="group flex w-full items-center gap-4 rounded-lg p-4 transition-colors hover:bg-white/2"
+>
+    <div class="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl">
+        <img
+            src={logo}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-contain object-center p-2"
+        />
+    </div>
+
+    <div class="min-w-0 bg-transparent">
+        <h3 class="truncate text-3xl font-bold leading-tight text-white">{title}</h3>
+        <p class="mt-1 truncate text-sm leading-tight text-white/50">{subtitle}</p>
+    </div>
+</a>

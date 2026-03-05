@@ -1,0 +1,31 @@
+---
+import ProjectCard from "../cards/ProjectCard.astro"
+---
+
+<section>
+    <h1 class="text-8xl font-extrabold">RECENT</h1>
+    <h1 class="text-8xl font-extrabold text-white/20">PROJECTS</h1>
+
+    <div class="mt-10 space-y-4">
+        <ProjectCard
+            href="https://github.com/AsterinoCarsen/Dino"
+            title="Dino"
+            subtitle="Full-stack web application designed for sport climbers to track their performance."
+            logo="/hero.webp"
+        />
+
+        <ProjectCard
+            href="https://github.com/AsterinoCarsen/Cellular-Automaton"
+            title="Cellular Automaton"
+            subtitle="Interactive visualization of cellular automata using HTML Canvas."
+            logo="/cell.png"
+        />
+
+        <ProjectCard
+            href="https://github.com/AsterinoCarsen/DarkOdyssey"
+            title="Dark Odyssey"
+            subtitle="A 2D side-scrolling platformer game built with Unity."
+            logo="/dark.png"
+        />
+    </div>
+</section>

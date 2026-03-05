@@ -1,0 +1,42 @@
+---
+interface Props {
+    href: string;
+    title: string;
+    subtitle: string;
+    logo: string;
+}
+
+const { href, title, subtitle, logo } = Astro.props as Props;
+---
+
+<a
+    href={href}
+    target="_blank"
+    rel="noopener"
+    class="group relative block w-full transition-colors hover:bg-white/2"
+>
+    <div class="flex flex-col gap-4 rounded-xl p-6">
+        <div class="flex items-center gap-4">
+            <img
+                src={logo}
+                alt={title}
+                class="h-32 w-32 rounded-lg object-contain"
+            />
+            <div>
+                <h3 class="text-2xl font-bold text-white">{title}</h3>
+                <p class="text-sm text-white/70">{subtitle}</p>
+            </div>
+
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+                viewBox="0 0 24 24"
+                color="var(--token-733bbd01-4431-42a0-b8b0-48fb9de5f3db, rgb(244, 108, 56))"
+                class="absolute right-6 top-7 h-5 w-5"
+                style="user-select: none; fill: var(--token-733bbd01-4431-42a0-b8b0-48fb9de5f3db, rgb(244, 108, 56)); flex-shrink: 0; transform: rotate(-45deg);"
+            >
+                <path d="M15 5l-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7-7-7z" />
+            </svg>
+        </div>
+    </div>
+</a>
