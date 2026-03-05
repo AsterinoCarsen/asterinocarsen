@@ -27,9 +27,7 @@ const { Content } = await post.render();
     <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-neutral-800">
         <header class="border-b border-neutral-800 bg-neutral-950/90 backdrop-blur">
             <div class="max-w-4xl mx-auto px-6 py-5 flex items-center justify-between">
-                <a href="/" class="text-sm text-neutral-300 hover:text-white transition"
-                    >Carsen Asterino</a
-                >
+                <a href="/" class="inline-flex items-center gap-3 group"> </a>
                 <a
                     href="/"
                     class="inline-flex items-center rounded-md border border-neutral-700 px-4 py-2 text-sm font-semibold hover:border-neutral-500 transition"
@@ -56,6 +54,16 @@ const { Content } = await post.render();
                     )
                 }
 
+                <div class="flex items-center pt-6 gap-4">
+                    <img
+                        src="/me.jpg"
+                        alt="Carsen Asterino"
+                        class="h-12 w-12 rounded-full object-cover ring-1 ring-neutral-700 transition group-hover:ring-neutral-500"
+                    />
+                    <span class="text-md text-neutral-300 transition group-hover:text-white">
+                        Carsen Asterino
+                    </span>
+                </div>
                 <p class="text-sm text-neutral-400 pt-4">{post.data.pubDate.toDateString()}</p>
 
                 <div
