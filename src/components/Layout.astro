@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Navbar from "./Navbar.astro";
 import Profile from "./Profile.astro";
+import Analytics from "@vercel/analytics/astro";
 ---
 
 <!doctype html>
@@ -45,6 +46,8 @@ import Profile from "./Profile.astro";
                 >
             </p>
         </main>
+
+        <Analytics />
 
         {/* Reveal on scroll */}
         <script is:inline>
