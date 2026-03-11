@@ -1,5 +1,8 @@
 ---
 import ProjectCard from "../cards/ProjectCard.astro"
+import heroProject from "../../assets/projects/hero.webp"
+import cellProject from "../../assets/projects/cell.webp"
+import darkProject from "../../assets/projects/dark.webp"
 ---
 
 <section>
@@ -11,21 +14,21 @@ import ProjectCard from "../cards/ProjectCard.astro"
             href="https://github.com/AsterinoCarsen/Dino"
             title="Dino"
             subtitle="Full-stack web application designed for sport climbers to track their performance."
-            logo="/hero.webp"
+            logo={heroProject}
         />
 
         <ProjectCard
             href="https://github.com/AsterinoCarsen/Cellular-Automaton"
             title="Cellular Automaton"
             subtitle="Interactive visualization of cellular automata using HTML Canvas."
-            logo="/cell.png"
+            logo={cellProject}
         />
 
         <ProjectCard
             href="https://github.com/AsterinoCarsen/DarkOdyssey"
             title="Dark Odyssey"
             subtitle="A 2D side-scrolling platformer game built with Unity."
-            logo="/dark.png"
+            logo={darkProject}
         />
     </div>
 </section>
