@@ -1,6 +1,6 @@
 # Asterino Carsen | Portfolio
 
-My personal portfolio and resume website. Check it out here: [asterinocarsen.vercel.app](https://asterinocarsen.vercel.app)
+My personal portfolio and resume website. Check it out here: [asterino.dev](https://asterino.dev)
 
 ## Features
 
