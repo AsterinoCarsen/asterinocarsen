@@ -1,3 +1,8 @@
+---
+import { Image } from "astro:assets"
+import me from "../assets/me.webp"
+---
+
 <section
     class="relative w-full overflow-hidden rounded-2xl bg-white p-10 text-black shadow-lg shadow-black/25"
 >
@@ -20,10 +25,17 @@
     </div>
 
     <div class="relative z-10 overflow-hidden rounded-2xl">
-        <img
-            src="me.jpg"
+        <Image
+            src={me}
             alt="Portrait"
+            width={500}
+            height={498}
+            layout="constrained"
+            fit="cover"
+            widths={[360, 500, 720, 1000]}
+            sizes="(min-width: 1024px) 500px, (min-width: 640px) 60vw, 100vw"
             class="h-72 w-full object-cover"
+            decoding="async"
             loading="lazy"
         />
     </div>
