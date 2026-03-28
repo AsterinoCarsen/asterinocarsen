@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import Analytics from "@vercel/analytics/astro";
+import me from "../../assets/me.webp";
 import "../../styles/global.css";
 
 export async function getStaticPaths() {
@@ -14,6 +16,12 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+
+const siteURL = "https://asterino.dev";
+const postURL = `${siteURL}/blog/${post.slug}`;
+const ogImage = post.data.imgURL
+    ? (post.data.imgURL.startsWith("http") ? post.data.imgURL : `${siteURL}${post.data.imgURL}`)
+    : `${siteURL}/og-default.png`;
 ---
 
 <!doctype html>
@@ -21,14 +29,26 @@ const { Content } = await post.render();
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
+
         <title>{post.data.title} | Carsen Asterino</title>
         <meta name="description" content={post.data.description} />
+        <link rel="canonical" href={postURL} />
+
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={postURL} />
+        <meta property="og:title" content={post.data.title} />
+        <meta property="og:description" content={post.data.description} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Carsen Asterino" />
+        <meta property="article:published_time" content={post.data.pubDate.toISOString()} />
+        <meta property="article:author" content="Carsen Asterino" />
     </head>
 
     <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-neutral-800">
         <header class="border-b border-neutral-800 bg-neutral-950/90 backdrop-blur">
             <div class="max-w-4xl mx-auto px-6 py-5 flex items-center justify-between">
-                <a href="/" class="inline-flex items-center gap-3 group"> </a>
                 <a
                     href="/"
                     class="inline-flex items-center rounded-md border border-neutral-700 px-4 py-2 text-sm font-semibold hover:border-neutral-500 transition"
@@ -46,9 +66,10 @@ const { Content } = await post.render();
                 <p class="mt-4 text-neutral-300">{post.data.description}</p>
                 {
                     post.data.imgURL && (
-                        <img
+                        <Image
                             src={post.data.imgURL}
                             alt={post.data.title}
+                            inferSize
                             class="mt-6 w-full rounded-lg object-cover select-none"
                             draggable="false"
                         />
@@ -56,12 +77,12 @@ const { Content } = await post.render();
                 }
 
                 <div class="flex items-center pt-6 gap-4">
-                    <img
-                        src="/me.webp"
+                    <Image
+                        src={me}
                         alt="Carsen Asterino"
-                        class="h-12 w-12 rounded-full object-cover ring-1 ring-neutral-700 transition group-hover:ring-neutral-500"
+                        class="h-12 w-12 rounded-full object-cover ring-1 ring-neutral-700 transition hover:ring-neutral-500"
                     />
-                    <span class="text-md text-neutral-300 transition group-hover:text-white">
+                    <span class="text-base text-neutral-300 transition hover:text-white">
                         Carsen Asterino
                     </span>
                 </div>
