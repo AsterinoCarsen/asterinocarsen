@@ -1,28 +1,8 @@
-# Asterino Carsen | Portfolio
+# Hi, I'm Carsen
 
-My personal portfolio and resume website. Check it out here: [asterino.dev](https://asterino.dev)
+Software Engineer based in Queen Creek, AZ, graduated May 2026 from ASU with a B.S. in Software Engineering
 
-## Features
+I build for the web: React Native, Next.js, TypeScript, Node.js, Postgres.
 
-- **Fast & Responsive** — Built with Astro for optimal performance
-- **Dark Theme** — Modern design with Tailwind CSS
-- **Contact Form** — Reach out directly via email (powered by Resend)
-- **Blog** — My thoughts and insights
-- **Experience & Projects** — Showcase of my work
-- **Tech Stack** — Tools I use and love
-
-## Tech Stack
-
-- **Framework:** Astro 5
-- **Styling:** Tailwind CSS 4
-- **Email:** Resend
-- **Deployment:** Vercel
-
-## Local Development
-
-```bash
-npm install
-npm run dev
-```
-
-Visit `localhost:4321`
+- Undergraduate TA for SER 421 Web Development at ASU
+- Portfolio and blog at [asterino.dev](https://asterino.dev)
