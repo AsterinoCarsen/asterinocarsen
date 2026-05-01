@@ -2,6 +2,13 @@
 import { getCollection } from "astro:content";
 import PreviewCard from "../cards/PreviewCard.astro";
 
+const WORDS_PER_MINUTE = 200;
+
+const getReadingMinutes = (body: string) => {
+    const wordCount = body.trim().split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.ceil(wordCount / WORDS_PER_MINUTE));
+};
+
 const latestPosts = (await getCollection("blog"))
     .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
     .slice(0, 3);
@@ -19,6 +26,7 @@ const latestPosts = (await getCollection("blog"))
                     title={post.data.title}
                     description={post.data.description}
                     meta={post.data.pubDate.toDateString()}
+                    readingMinutes={getReadingMinutes(post.body)}
                 />
             ))
         }

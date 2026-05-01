@@ -4,6 +4,7 @@ interface Props {
     title: string;
     description?: string;
     meta?: string;
+    readingMinutes?: number;
     class?: string;
     ariaLabel?: string;
 }
@@ -13,9 +14,12 @@ const {
     title,
     description,
     meta,
+    readingMinutes,
     class: className = "",
     ariaLabel,
 } = Astro.props as Props;
+
+const readingTime = readingMinutes ? `${readingMinutes} min read` : undefined;
 ---
 
 <a
@@ -44,6 +48,14 @@ const {
 
     {description && <p class="mt-4 max-w-2xl whitespace-pre-line leading-[1.35] text-white/60">{description}</p>}
 
-    {meta && <p class="mt-8 text-white/60">{meta}</p>}
+    {
+        (meta || readingTime) && (
+            <p class="mt-8 text-white/60">
+                {meta}
+                {meta && readingTime && " | "}
+                {readingTime}
+            </p>
+        )
+    }
 </a>
 
