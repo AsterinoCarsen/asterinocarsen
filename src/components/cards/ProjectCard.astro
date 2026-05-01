@@ -18,8 +18,8 @@ const { href, title, subtitle, logo } = Astro.props as Props;
     rel="noopener"
     class="group relative block w-full transition-colors hover:bg-white/2"
 >
-    <div class="flex flex-col gap-4 rounded-xl p-6">
-        <div class="flex items-center gap-4">
+    <div class="flex flex-col gap-4 rounded-xl p-4 sm:p-6">
+        <div class="flex min-w-0 items-center gap-4 pr-8">
             <Image
                 src={logo}
                 alt={title}
@@ -28,11 +28,11 @@ const { href, title, subtitle, logo } = Astro.props as Props;
                 layout="fixed"
                 fit="contain"
                 widths={[128, 256]}
-                class="h-32 w-32 rounded-lg object-contain"
+                class="h-20 w-20 shrink-0 rounded-lg object-contain sm:h-32 sm:w-32"
                 decoding="async"
             />
-            <div>
-                <h3 class="text-2xl font-bold text-white">{title}</h3>
+            <div class="min-w-0">
+                <h3 class="text-xl font-bold leading-tight text-white sm:text-2xl">{title}</h3>
                 <p class="text-sm text-white/70">{subtitle}</p>
             </div>
 

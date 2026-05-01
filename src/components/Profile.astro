@@ -4,7 +4,7 @@ import me from "../assets/me.webp"
 ---
 
 <section
-    class="relative w-full overflow-hidden rounded-2xl bg-white p-10 text-black shadow-lg shadow-black/25"
+    class="relative w-full overflow-hidden rounded-2xl bg-white p-6 text-black shadow-lg shadow-black/25 sm:p-10"
 >
     <div
         class="pointer-events-none absolute -left-6 -top-5 h-20 w-44 text-green opacity-90"
@@ -33,15 +33,15 @@ import me from "../assets/me.webp"
             layout="constrained"
             fit="cover"
             widths={[360, 500, 720, 1000]}
-            sizes="(min-width: 1024px) 500px, (min-width: 640px) 60vw, 100vw"
-            class="h-72 w-full object-cover"
+            sizes="(min-width: 1024px) 500px, (min-width: 640px) 60vw, calc(100vw - 80px)"
+            class="h-56 w-full object-cover sm:h-72"
             decoding="async"
             loading="lazy"
         />
     </div>
 
-    <div class="relative z-10 mt-20 text-center">
-        <h2 class="text-4xl font-bold tracking-tight">Carsen Asterino</h2>
+    <div class="relative z-10 mt-14 text-center sm:mt-20">
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Carsen Asterino</h2>
         <p class="mx-auto mt-3 max-w-xs text-base font-medium leading-tight text-zinc-500">
             A software engineer building practical, fast, and user-focused web experiences.
         </p>
