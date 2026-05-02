@@ -50,11 +50,15 @@ const readingTime = readingMinutes ? `${readingMinutes} min read` : undefined;
 
     {
         (meta || readingTime) && (
-            <p class="mt-8 text-white/60">
-                {meta}
-                {meta && readingTime && " | "}
-                {readingTime}
-            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-2 text-sm text-white/55">
+                {meta && <span>{meta}</span>}
+                {meta && readingTime && <span class="text-white/25" aria-hidden="true">/</span>}
+                {readingTime && (
+                    <span class="font-medium text-white/75">
+                        {readingTime}
+                    </span>
+                )}
+            </div>
         )
     }
 </a>
