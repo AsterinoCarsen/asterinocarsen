@@ -10,7 +10,7 @@ interface Props {
 const { name, source, title, text, href } = Astro.props as Props;
 ---
 
-<div class="group relative block rounded-xl px-6 py-7 bg-white/[0.03] border border-white/[0.06] transition-colors hover:bg-white/[0.06]">
+<div class="group relative block overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-6 transition-colors hover:bg-white/[0.06] sm:px-6 sm:py-7">
     <svg
         class="mb-4 h-6 w-6 text-[#f46c38] opacity-80"
         viewBox="0 0 24 24"
@@ -22,8 +22,8 @@ const { name, source, title, text, href } = Astro.props as Props;
 
     <p class="max-w-2xl leading-[1.35] text-white/60">{text}</p>
 
-    <div class="mt-8 flex items-center justify-between">
-        <div>
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div class="min-w-0">
             <p class="font-bold text-white">{name}</p>
             {title && <p class="text-sm text-white/40">{title}</p>}
         </div>

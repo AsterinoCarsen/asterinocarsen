@@ -9,7 +9,7 @@ import Analytics from "@vercel/analytics/astro";
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Carsen Asterino</title>
         <meta name="description" content="Software Engineer major at Arizona State University." />
         <link rel="canonical" href="https://asterino.dev" />
@@ -33,18 +33,20 @@ import Analytics from "@vercel/analytics/astro";
 
     <body class="min-h-screen bg-black text-white antialiased">
         <main
-            class="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-8 md:px-10 md:py-12"
+            class="mx-auto flex min-h-screen w-full max-w-7xl flex-col overflow-x-hidden px-4 py-8 sm:px-6 md:px-10 md:py-12"
         >
-            <Navbar />
+            <div class="flex w-full justify-center">
+                <Navbar />
+            </div>
 
             <div
-                class="mt-6 grid flex-1 gap-8 lg:grid-cols-[minmax(260px,340px)_1fr] lg:items-start"
+                class="mt-6 grid min-w-0 flex-1 gap-8 lg:grid-cols-[minmax(260px,340px)_1fr] lg:items-start"
             >
                 <aside class="w-full lg:sticky lg:top-8 lg:self-start">
                     <Profile />
                 </aside>
 
-                <section class="slot-content w-full [&>*+*]:mt-26 md:[&>*+*]:mt-32">
+                <section class="slot-content min-w-0 w-full [&>*+*]:mt-26 md:[&>*+*]:mt-32">
                     <slot />
                 </section>
             </div>

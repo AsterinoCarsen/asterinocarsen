@@ -2,14 +2,21 @@
 import { getCollection } from "astro:content";
 import PreviewCard from "../cards/PreviewCard.astro";
 
+const WORDS_PER_MINUTE = 200;
+
+const getReadingMinutes = (body: string) => {
+    const wordCount = body.trim().split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.ceil(wordCount / WORDS_PER_MINUTE));
+};
+
 const latestPosts = (await getCollection("blog"))
     .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
     .slice(0, 3);
 ---
 
 <section>
-    <h1 class="text-8xl font-extrabold">DESIGN</h1>
-    <h1 class="text-8xl font-extrabold text-white/20">THOUGHTS</h1>
+    <h1 class="text-[clamp(2.75rem,13vw,6rem)] font-extrabold leading-none lg:text-8xl">DESIGN</h1>
+    <h1 class="text-[clamp(2.75rem,13vw,6rem)] font-extrabold leading-none text-white/20 lg:text-8xl">THOUGHTS</h1>
 
     <div class="mt-10 space-y-4">
         {
@@ -19,6 +26,7 @@ const latestPosts = (await getCollection("blog"))
                     title={post.data.title}
                     description={post.data.description}
                     meta={post.data.pubDate.toDateString()}
+                    readingMinutes={getReadingMinutes(post.body)}
                 />
             ))
         }
